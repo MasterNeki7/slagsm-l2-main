@@ -21,4 +21,11 @@
 
     }
 
+
+    public Bullets BulletRandom(Weapon weapon)
+    {
+        List <Bullets> TempList = allTheAmmo.FindAll(ammo => ammo.Calibre == weapon.Calibre);
+        return TempList[Random.Shared.Next(TempList.Count)];
+        
+    }
 }
