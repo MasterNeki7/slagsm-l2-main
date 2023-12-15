@@ -2,10 +2,13 @@ public class Tagilla : Scav
 {
     public Tagilla()
     {
+        MeleeLocker melee = new();
+        isRanged = false;
+
         name = "Tagilla";
         Hp = 1220;
 
-        weapon.Name = "DB Superdors 2021 Sledgehammer";
+        meleeWeapon = melee.allTheMelee[0];
     }
 
 }

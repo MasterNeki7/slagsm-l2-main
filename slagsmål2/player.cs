@@ -1,7 +1,10 @@
 public class Player
 {
-    public Weapon weapon = new();
+    public Ranged weapon = new();
     public Bullets bullet = new();
+    public Melee meleeWeapon = new();
+
+    public bool isRanged = true;
 
     public string name;
     public int Hp;
@@ -15,16 +18,33 @@ public class Player
         weapon = weapons.allTheWeapons[pmcWeapons[Random.Shared.Next(pmcWeapons.Length)]];
 
         bullet = bullets.BulletRandom(weapon);
-        
         Hp = 440;
     }
 
-    void Attack()
+
+
+    public void Attack(Player attackingPlayer, Player damagedPlayer)
     {
-        if (Random.Shared.Next(101) > weapon.MisfireChance)
+        if (Random.Shared.Next(101) > attackingPlayer.weapon.MisfireChance)
         {
-            
+            damagedPlayer.Hp -= attackingPlayer.bullet.Damage;
+            Console.WriteLine($"You hit {damagedPlayer.name}");
         }
+
+        else
+        {
+            Console.WriteLine("Your weapon jammed!");
+        }
+    }
+
+    public void Defend()
+    {
+
+    }
+
+    public void Run()
+    {
+
     }
 
 }

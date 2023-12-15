@@ -1,9 +1,9 @@
 ﻿public class WeaponLocker
 {
-
     List<string> weaponRows = File.ReadAllLines("weapons.csv").ToList();
+    public List<Ranged> allTheWeapons = new();
+    
 
-    public List<Weapon> allTheWeapons = new();
 
     public WeaponLocker()
     {
@@ -21,8 +21,11 @@
 
     }
 
-    public Weapon WeaponRandom()
+
+
+    public Ranged WeaponRandom()
     {
         return allTheWeapons[new Random().Next(allTheWeapons.Count)];
     }
+    
 }
