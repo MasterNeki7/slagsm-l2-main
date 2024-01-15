@@ -28,13 +28,19 @@ public class Player
         if (Random.Shared.Next(101) > attackingPlayer.weapon.MisfireChance)
         {
             damagedPlayer.Hp -= attackingPlayer.bullet.Damage;
-            Console.WriteLine($"You hit {damagedPlayer.name}");
+            Console.WriteLine($"{attackingPlayer.name} hit {damagedPlayer.name} for {attackingPlayer.bullet.Damage}");
         }
 
         else
         {
             Console.WriteLine("Your weapon jammed!");
         }
+    }
+
+    public void MeleeAttack(Player attackingPlayer, Player damagedPlayer)
+    {
+        damagedPlayer.Hp -= attackingPlayer.meleeWeapon.Damage;
+        Console.WriteLine($"{attackingPlayer.name} hit {damagedPlayer.name} for {damagedPlayer.meleeWeapon.Damage}");
     }
 
     public void Defend()
