@@ -27,7 +27,7 @@ public class Player
     {
         if (Random.Shared.Next(101) > attackingPlayer.weapon.MisfireChance)
         {
-            damagedPlayer.Hp -= attackingPlayer.bullet.Damage;
+            damagedPlayer.Hp -= attackingPlayer.bullet.Damage * Random.Shared.Next(3);
             Console.WriteLine($"{attackingPlayer.name} hit {damagedPlayer.name} for {attackingPlayer.bullet.Damage}");
         }
 
