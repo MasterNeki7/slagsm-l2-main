@@ -3,6 +3,7 @@ public class Tagilla : Scav
     public Tagilla()
     {
         MeleeLocker melee = new();
+        
         isRanged = false;
 
         name = "Tagilla";

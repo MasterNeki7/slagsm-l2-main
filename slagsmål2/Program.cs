@@ -11,13 +11,12 @@ BulletLocker locker2 = new();
 Player Player = new Player();
 bool OkAnswer = false;
 bool InFight = false;
-int whichWeapon;
 
 //---------------------------------------------------------------------------------------
 
 //Check for existing Tagilla. If tagilla does not exist and the random number ís 10 or below, Add tagilla. Else Add Scav
 
-    if (Random.Shared.Next(101) <= 1000 && enemies.Count(enemy => enemy.name != "Tagilla") == 0)
+    if (Random.Shared.Next(101) <= 10000 && enemies.Count(enemy => enemy.name != "Tagilla") == 0)
     {
         enemies.Add(new Tagilla());
     }
@@ -78,47 +77,42 @@ Console.ReadLine();
 
 while(InFight == true && Player.Hp >= 0 && enemies[0].Hp >= 0)
 {
-whichWeapon = Random.Shared.Next(3);
-if (whichWeapon == 1)
-{
-
-}
-else
-{
-
-}
-
-Console.Clear();
-Console.WriteLine("What will you do? Answer with a number!");
-Console.WriteLine($"1. Attack, 2. Defend, 3. Run");
-string answer = Console.ReadLine();
-
-//must be answered
-
-OkAnswer = false;
-while(OkAnswer == false)
-{
-    if (answer == "1")
+    OkAnswer = false;
+    while(OkAnswer == false)
     {
-        Player.Attack(Player, enemies[0]);
-        OkAnswer = true;
+
+        Console.WriteLine("What will you do? Answer with a number!");
+        Console.WriteLine($"1. Attack, 2. Defend, 3. Run");
+        string answer = Console.ReadLine();
+
+        if (answer == "1")
+        {
+            Player.Attack(Player, enemies[0]);
+            OkAnswer = true;
+        }
+
+        else
+        {
+            Console.WriteLine("Answer with a real option!");
+            Console.Clear(); 
+        }
+
     }
 
-    else
-    {
-        Console.WriteLine("Answer with a real option!");    
-    }
+        if (Random.Shared.Next(3) <= 1 &&  enemies[0].name != "Tagilla")
+        {
+            enemies[0].Attack(enemies[0], Player);
+        }
 
-    if (Random.Shared.Next(3) <= 1)
-    {
-        enemies[0].Attack(enemies[0], Player);
-    }
+        else
+        {
+            enemies[0].MeleeAttack(enemies[0], Player);
+        }
 
-}
+    Console.WriteLine($"{enemies[0].name}'s HP is {enemies[0].Hp} and your Hp is {Player.Hp}");
 
-Console.WriteLine($"{enemies[0].name}'s HP is {enemies[0].Hp} and your Hp is {Player.Hp}");
-
-Console.ReadLine();
+    Console.ReadLine();
+    Console.Clear();
 }
 
 
@@ -128,12 +122,13 @@ Console.ReadLine();
 
 if(Player.Hp <= 0)
 {
-    Console.WriteLine($"{enemies[0].name} ☠︎︎ {Player.name} (head, eyes)");
+    
+    Console.WriteLine($"{enemies[0].name} 💀 {Player.name} (head, eyes)");
 }
 
 else if (enemies[0].Hp <= 0)
 {
-    Console.WriteLine($"You killed {enemies[0].name}!");
+    Console.WriteLine($"{Player.name} 💀 {enemies[0].name} HEADSHOT (3.4M)");
 }
 
 Console.ReadLine();
