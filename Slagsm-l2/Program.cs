@@ -14,7 +14,7 @@ bool InFight = false;
 
 //---------------------------------------------------------------------------------------
 
-//Check for existing Tagilla. If tagilla does not exist and the random number ís 10 or below, Add tagilla. Else Add Scav
+//Check for existing Tagilla. If tagilla does not exist and the random number1 ís 10 or below, Add tagilla. Else Add Scav
 
     if (Random.Shared.Next(101) <= 10000 && enemies.Count(enemy => enemy.name != "Tagilla") == 0)
     {
